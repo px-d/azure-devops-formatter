@@ -15,8 +15,13 @@ Feature: Installation
     And config json is correctly set up
       """
       {
-      "orga_id": "hello123",
-      "project_id": "abcdefg",
+        "orga_id": "hello123",
+        "project_id": "abcdefg",
+        "templates": {
+          "list": "{{#steps}}{{.}}{{/steps}}",
+          "prettify": "<h3>Scenario: {{ scenario_name }}</h3>Error: {{ error_type }}<br>Log:<br><fontⶩcolor='red'>{{ traceback }}</font>",
+          "table": "<table><tr>{{#headings}}<th>{{.}}</th>{{/headings}}</tr>{{#rows}}<tr>{{#.}}<td>{{.}}</td>{{/.}}</tr>{{/rows}}</table>"
+        }
       }
       """
     When I run the example tests
