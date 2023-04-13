@@ -14,7 +14,7 @@ setup(
     description="Azure Devops Reporter",
     long_description=read_file("README.md"),
     long_description_content_type="text/markdown",
-    url="coming.soon",
+    url="https://github.com/px-d/azure-devops-formatter",
     classifiers=[
         "Environment :: Console",
         "Programming Language :: Python :: 3.10",
