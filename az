@@ -1,0 +1,10 @@
+#!/bin/ash
+
+rm -f test.txt
+
+for ARG in $@; 
+do
+    echo $ARG >> test.txt
+done
+
+echo '{"token":"1234"}'
