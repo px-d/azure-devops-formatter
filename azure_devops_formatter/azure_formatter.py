@@ -10,7 +10,7 @@ from behave import model
 class AzureFormatter(Formatter):
     def __init__(self, stream_opener, config):
         super().__init__(stream_opener, config)
-        
+
         with open("config.json", "r") as f:
             self.config = json.loads(f.read().strip())
 
@@ -52,9 +52,8 @@ class AzureFormatter(Formatter):
                             "youtube": "7.8.2",
                             "github": "1.2.3",
                         },
-                        
                     ),
-                    config=self.config
+                    config=self.config,
                 )
             )
 
@@ -67,6 +66,7 @@ class AzureFormatter(Formatter):
         self.step_exception = None
 
     def close(self):
+        """After All"""
         for idx, gr in enumerate(self.generated_reports):
             print(gr, idx)
         self.close_stream()
@@ -146,11 +146,7 @@ def convert_table(input_table: model.Table):
 
 
 def publish_report(
-    bugreport: Report,
-    severity="1 = low",
-    assignee="",
-    tags=None,
-    config=None
+    bugreport: Report, severity="1 = low", assignee="", tags=None, config=None
 ):
     """
     Report a bug to Azure DevOps
@@ -188,3 +184,9 @@ def publish_report(
     js = json.loads(result.decode())
     bugreport_id = js["id"]
     return f"https://dev.azure.com/vwac/Data%20Collection/_workitems/edit/{bugreport_id}/#/'"
+
+
+def get_config():
+    with open("config.json", "r") as cfg:
+        contents = json.loads(cfg.read().strip())
+    return contents
