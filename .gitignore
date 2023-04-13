@@ -13,3 +13,6 @@ dist/
 *.pyc
 *.pyo
 *.bak
+
+#---
+**/config.json
