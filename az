@@ -2,7 +2,7 @@
 
 rm -f test.txt
 
-for ARG in $@; 
+for ARG in "$@"; 
 do
     echo $ARG >> test.txt
 done
