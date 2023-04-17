@@ -1,7 +1,6 @@
 # Azure Devops direct BugReport creation for behave
 
-
-config example:
+Config Example:
 
 ```json
 {
@@ -19,3 +18,11 @@ config example:
   }
 }
 ```
+
+> Note: The `ⶩ` char in templates > prettify is very important since this character helps the html being translated properly
+
+### Severity (whitespace is important):
+
+- 1 = low
+- 2 = medium
+- 3 = high
