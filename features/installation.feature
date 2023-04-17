@@ -3,11 +3,6 @@ Feature: Installation
   Scenario: Install from pypi
     Given the azure behave reporter library is installed
     And azure cli is logged in
-    And behave ini is correctly set up
-      """
-      [behave.formatters]
-      azure_devops = azure_devops_formatter:AzureFormatter
-      """
     And config json is correctly set up
       """
       {
@@ -44,11 +39,6 @@ Feature: Installation
   Scenario: Install from pypi
     Given the azure behave reporter library is installed
     And azure cli is logged in
-    And behave ini is correctly set up
-      """
-      [behave.formatters]
-      azure_devops = azure_devops_formatter:AzureFormatter
-      """
     And config json is correctly set up
       """
       {

@@ -30,12 +30,10 @@ def step_impl(context):
             "install",
         ]
     )
-    # print(out)
 
 
 @given("azure cli is logged in")
 def step_impl(context):
-    # result = check_output(["az", "login"])
     # result = check_output(
     #     [
     #         "az",
@@ -46,21 +44,7 @@ def step_impl(context):
     #         "supercoolname",
     #     ]
     # )
-    # print(result)
-
-    # az workitem create bla bla
-    # ^ funktioniert das überhaupt?
     print("Testing for login in azure cli..")
-    assert True
-
-
-@given("behave ini is correctly set up")
-def step_impl(context):
-    # with open("behave.ini", "w") as file:
-    #     file.write(context.text)
-
-    # i believe there is no actual way to access the behave.ini from our
-    # formatter since we never get access to the context.
     assert True
 
 
@@ -163,4 +147,8 @@ def arg_parser(i):
 
 
 if __name__ == "__main__":
-    print(arg_parser("a command --arg1 super arg --arg2 something else --arg3 another one --fields name=philip\n age=22"))
+    print(
+        arg_parser(
+            "a command --arg1 super arg --arg2 something else --arg3 another one --fields name=philip\n age=22"
+        )
+    )

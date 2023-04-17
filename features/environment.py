@@ -16,8 +16,6 @@ from wiremock import wiremock
 
 
 def before_all(context):
-    # docker network create my-network
-    # docker run --network=my-network my-container
     try:
         check_output(["docker", "network", "rm", "reporter_test"])
     except:
