@@ -1,3 +1,4 @@
+from functools import wraps
 import json
 from subprocess import check_output
 import traceback
@@ -10,9 +11,6 @@ from behave import model
 class AzureFormatter(Formatter):
     def __init__(self, stream_opener, config):
         super().__init__(stream_opener, config)
-
-        with open("config.json", "r") as f:
-            self.config = json.loads(f.read().strip())
 
     generated_reports = []
     current_scenario = None
@@ -40,7 +38,6 @@ class AzureFormatter(Formatter):
             # If it is None, the step didn't fail
             # If it is not none, the step failed and the scenario is over --> After Scenario workaround
             self.error_step = step
-            print(f"config: {self.config['orga_id']}")
             self.generated_reports.append(
                 publish_report(
                     Report(
@@ -53,7 +50,7 @@ class AzureFormatter(Formatter):
                             "github": "1.2.3",
                         },
                     ),
-                    config=self.config,
+                    config=get_config(),
                 )
             )
 
@@ -145,9 +142,7 @@ def convert_table(input_table: model.Table):
     )
 
 
-def publish_report(
-    bugreport: Report, severity="1 = low", assignee="", tags=None, config=None
-):
+def publish_report(bugreport: Report, tags=None, config=None):
     """
     Report a bug to Azure DevOps
     bugreport: BugReport object containing the information about the error and where it occurred
@@ -156,6 +151,11 @@ def publish_report(
     assignee: The person you want to associate the bugreport with (either name or email <- please use email ;))
     tags: List of tags to add to the bug report (Automated, Test, Foo, Bar, ...)
     """
+    config = get_config()
+
+    severity = config["report_settings"].get("severity", "1 = low")
+    assignee = config["report_settings"].get("assignee", "")
+
     result = check_output(
         [
             "/bin/az",
@@ -190,3 +190,10 @@ def get_config():
     with open("config.json", "r") as cfg:
         contents = json.loads(cfg.read().strip())
     return contents
+
+
+if __name__ == "__main__":
+    d = get_config()
+    print(type(d))
+    print(d)
+    print(d["report_settings"]["assignee"] if not None else "Some")

@@ -1,0 +1,14 @@
+{
+    "title": "First scenario",
+    "assigned-to": "",
+    "type": "Bug",
+    "organization": "hello123",
+    "project": "abcdefg",
+    "description": "<h3>Scenario:&nbsp;First&nbsp;scenario</h3>Error:&nbsp;AssertionError<br>Log:<br><font color='red'>Traceback&nbsp;(most&nbsp;recent&nbsp;call&nbsp;last):<br>&nbsp;&nbsp;File&nbsp;&quot;/usr/local/lib/python3.10/site-packages/behave-1.2.6-py3.10.egg/behave/model.py&quot;,&nbsp;line&nbsp;1329,&nbsp;in&nbsp;run<br>&nbsp;&nbsp;&nbsp;&nbsp;match.run(runner.context)<br>&nbsp;&nbsp;File&nbsp;&quot;/usr/local/lib/python3.10/site-packages/behave-1.2.6-py3.10.egg/behave/matchers.py&quot;,&nbsp;line&nbsp;98,&nbsp;in&nbsp;run<br>&nbsp;&nbsp;&nbsp;&nbsp;self.func(context,&nbsp;*args,&nbsp;**kwargs)<br>&nbsp;&nbsp;File&nbsp;&quot;features/examples/steps/example.py&quot;,&nbsp;line&nbsp;16,&nbsp;in&nbsp;step_impl<br>&nbsp;&nbsp;&nbsp;&nbsp;assert&nbsp;False<br>AssertionError<br></font>",
+    "fields": {
+        "Severity": "3 = high",
+        "Repro Steps": "<style>table, th, td { border: 1px solid black; border-collapse: collapse;}</style><li>Given an innocent step in background</li><li>Given this steps outputs &quot;hello&quot;</li><li>When this step fails</li><li>Then not reached here</li>",
+        "System.Tags": "",
+        "System Info": "<li>youtube - 7.8.2</li><li>github - 1.2.3</li>"
+    }
+}

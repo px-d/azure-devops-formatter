@@ -13,7 +13,9 @@ Feature: Installation
       {
         "orga_id": "hello123",
         "project_id": "abcdefg",
-        "severity": "1 = low",
+        "report_settings": {
+          "severity": "1 = low"
+        },
         "templates": {
           "list": "{{#steps}}{{.}}{{/steps}}",
           "prettify": "<h3>Scenario: {{ scenario_name }}</h3>Error: {{ error_type }}<br>Log:<br><fontⶩcolor='red'>{{ traceback }}</font>",
@@ -21,8 +23,7 @@ Feature: Installation
         }
       }
       """
-    # TODO AB HIER
-    When I run the example tests
+    When I run the example tests with
       """
       behave -f azure_devops
       """
@@ -45,7 +46,6 @@ Feature: Installation
       """
       <style>table, th, td { border: 1px solid black; border-collapse: collapse;}</style><li>Given an innocent step in background</li><li>Given this steps outputs &quot;hello&quot;</li><li>When this step fails</li><li>Then not reached here</li>
       """
-
   Scenario: Install from pypi
     Given the azure behave reporter library is installed
     And azure cli is logged in
@@ -59,7 +59,9 @@ Feature: Installation
       {
         "orga_id": "hello123",
         "project_id": "abcdefg",
-        "severity": "3 = high"
+        "report_settings": {
+          "severity": "3 = high"
+        }
       }
       """
     When I run the example tests with
