@@ -74,9 +74,6 @@ def step_impl(context):
     with open("test.txt", "r") as f:
         args = arg_parser(f.readlines())
 
-    with open("out.txt", "w") as ff:
-        ff.write(json.dumps(args, indent=4))
-
     for row in list(context.table):
         argument, value = row["argument"], row["value"]
         print(f"Argument: '{argument}' Value: '{value}'")
@@ -145,10 +142,7 @@ def arg_parser(i):
 
     return parsed
 
-
 if __name__ == "__main__":
-    print(
-        arg_parser(
-            "a command --arg1 super arg --arg2 something else --arg3 another one --fields name=philip\n age=22"
-        )
-    )
+    import doctest
+
+    doctest.testmod()

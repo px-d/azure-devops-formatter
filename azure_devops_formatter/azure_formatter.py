@@ -35,8 +35,6 @@ class AzureFormatter(Formatter):
     def result(self, step):
         """After Step"""
         if self.step_exception is not None:
-            # If it is None, the step didn't fail
-            # If it is not none, the step failed and the scenario is over --> After Scenario workaround
             self.error_step = step
             self.generated_reports.append(
                 publish_report(

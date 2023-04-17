@@ -1,7 +1,0 @@
-{
-    "orga_id": "hello123",
-    "project_id": "abcdefg",
-    "report_settings": {
-        "severity": "3 = high"
-    }
-}
